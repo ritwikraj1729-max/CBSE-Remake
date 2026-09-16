@@ -1,1 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CBSE | Central Board of Secondary Education — Academics</title>
+<meta name="description" content="Academic Unit of the Central Board of Secondary Education — curriculum, circulars, sample question papers, skill education and more.">
 
+<!-- ============ FAVICON ============ -->
+<link rel="icon" type="image/png" href="image-removebg-preview.png">
+<link rel="apple-touch-icon" href="image-removebg-preview.png">
+<link rel="shortcut icon" href="image-removebg-preview.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS
+   ============================================================ */
+:root{
+  --navy:#0a2240;
+  --navy-2:#103463;
+  --blue:#1d5fbf;
+  --blue-soft:#e8f1fd;
+  --saffron:#ff8f1f;
+  --saffron-d:#e2700a;
+  --green:#0f8a4d;
+  --green-soft:#e6f6ee;
+  --red:#d63a3a;
+  --ink:#17222f;
+  --muted:#5c6c80;
+  --bg:#eef3f9;
+  --card:#ffffff;
+  --line:#dde6f1;
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 4px 16px rgba(10,34,64,.07);
+  --shadow-lg:0 16px 40px rgba(10,34,64,.15);
+  --ease:cubic-bezier(.2,.7,.3,1);
+}
+
+/* ============================================================
+   2. BASE / RESET
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+  overflow-x:hidden;
+}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.65;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  overflow-x:clip;
+  min-height:100vh;
+  width:100%;
+}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.25;color:var(--navy)}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block;height:auto}
+ul{list-style:none}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:2px;border-radius:6px}
+body.nav-open{overflow:hidden}
+
+.container{width:min(1200px,92%);margin-inline:auto;max-width:100%}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:9999;
+  background:var(--saffron);color:#fff;padding:.7rem 1.2rem;border-radius:0 0 10px 0;font-weight:600;
+}
+.skip-link:focus{left:0}
+
+/* ============================================================
+   3. HEADER
+   ============================================================ */
+.site-header{
+  background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 55%,#1b4f8f 100%);
+  color:#fff;position:relative;overflow:hidden;z-index:10;
+}
+.site-header::after{
+  content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,143,31,.35),transparent 70%);pointer-events:none;
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1rem 0;flex-wrap:wrap;position:relative;z-index:2;
+}
+.brand{display:flex;align-items:center;gap:.85rem;min-width:0}
+.brand-logo{
+  width:60px;height:60px;flex:0 0 60px;object-fit:contain;background:#fff;
+  border-radius:14px;padding:6px;box-shadow:0 8px 20px rgba(0,0,0,.28);
+  transition:transform .3s var(--ease);
+}
+.brand:hover .brand-logo{transform:scale(1.05) rotate(-2deg)}
+.brand-text{min-width:0}
+.brand-text strong{display:block;font-family:'Poppins';font-weight:600;font-size:1.02rem;letter-spacing:.2px;line-height:1.25}
+.brand-text small{display:block;font-size:.78rem;color:#a9c4e6;letter-spacing:1.6px;text-transform:uppercase}
+
+.header-tools{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.tool-link{
+  display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1rem;border-radius:999px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  font-size:.86rem;font-weight:500;transition:all .25s var(--ease);min-height:38px;
+}
+.tool-link:hover,.tool-link:focus-visible{background:var(--saffron);border-color:var(--saffron);color:#2a1500;transform:translateY(-2px)}
+.lang-switch{display:flex;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:3px}
+.lang-switch a,.lang-switch button{
+  padding:.45rem .9rem;border-radius:999px;font-size:.82rem;font-weight:600;transition:.25s var(--ease);min-width:40px;text-align:center;
+}
+.lang-switch a.is-active{background:#fff;color:var(--navy)}
+.lang-switch a:not(.is-active):hover,
+.lang-switch button:not(.is-active):hover{background:rgba(255,255,255,.16)}
+.lang-switch button{cursor:pointer;color:inherit}
+
+/* ============================================================
+   4. NAVIGATION  (non-sticky: scrolls with the page)
+   ============================================================ */
+.mainnav{
+  background:#fff;border-bottom:1px solid var(--line);
+  position:relative;          /* was: position:sticky; top:0; */
+  z-index:900;
+  box-shadow:0 2px 14px rgba(10,34,64,.06);
+}
+.nav-inner{display:flex;align-items:center;gap:.5rem;position:relative;flex-wrap:wrap}
+
+.nav-toggle{
+  display:none;align-items:center;gap:.55rem;
+  padding:.75rem 1.1rem;margin:.55rem 0;border-radius:10px;
+  background:var(--blue-soft);color:var(--navy);font-weight:600;font-size:.92rem;
+  transition:.25s var(--ease);min-height:44px;
+}
+.nav-toggle:hover{background:var(--blue);color:#fff}
+
+.nav-backdrop{
+  display:none;position:fixed;inset:0;
+  background:rgba(10,34,64,.55);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s var(--ease),visibility .35s var(--ease);
+  z-index:1050;
+}
+.nav-backdrop.show{opacity:1;visibility:visible}
+
+.nav-list{display:flex;align-items:center;flex-wrap:wrap;gap:.1rem;flex:1}
+.nav-list > li{position:relative}
+.nav-list > li > a,
+.nav-list > li > .drop-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.85rem .72rem;font-size:.86rem;font-weight:600;color:#2c3e55;
+  border-radius:10px;transition:all .22s var(--ease);white-space:nowrap;
+}
+.nav-list > li > a:hover,
+.nav-list > li > .drop-btn:hover,
+.nav-list > li.open > .drop-btn{color:var(--blue);background:var(--blue-soft)}
+.nav-list > li > .drop-btn i{font-size:.62rem;transition:transform .25s var(--ease)}
+.nav-list > li.open > .drop-btn i{transform:rotate(180deg)}
+
+.nav-list > li > a.hl{color:var(--saffron-d)}
+.nav-list > li > a.hl::before{
+  content:"";width:7px;height:7px;border-radius:50%;background:var(--red);
+  display:inline-block;margin-right:.35rem;animation:pulse 1.4s infinite;
+}
+.nav-list > li > a.green{background:var(--green-soft);color:var(--green)}
+.nav-list > li > a.green:hover{background:var(--green);color:#fff}
+
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%{transform:scale(1.5);opacity:.4}
+}
+
+.drawer-top{display:none}
+
+.drop{
+  position:absolute;top:calc(100% + 6px);left:0;min-width:250px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-lg);padding:.45rem;
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:all .25s var(--ease);z-index:1000;
+}
+.drop li{position:relative}
+.drop a,
+.drop > li > .drop-btn{
+  display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:.6rem .8rem;border-radius:8px;font-size:.855rem;font-weight:500;color:#33465e;
+  transition:.2s var(--ease);width:100%;text-align:left;
+}
+.drop a:hover,
+.drop > li > .drop-btn:hover{background:var(--blue-soft);color:var(--blue);padding-left:1.05rem}
+.drop a i,
+.drop > li > .drop-btn i{font-size:.6rem;opacity:.55}
+.drop .drop{top:-6px;left:calc(100% + 6px);min-width:190px}
+
+@media (min-width:993px){
+  .nav-list > li:hover > .drop{opacity:1;visibility:visible;transform:translateY(0)}
+  .drop li:hover > .drop{opacity:1;visibility:visible;transform:translateY(0)}
+}
+
+/* ============================================================
+   5. HERO / CAROUSEL
+   ============================================================ */
+.hero{position:relative;overflow:hidden;background:var(--navy)}
+.slides{position:relative;height:clamp(360px,42vw,460px)}
+.slide{
+  position:absolute;inset:0;display:flex;align-items:center;
+  opacity:0;visibility:hidden;transform:scale(1.04);
+  transition:opacity .8s var(--ease),transform 1.2s var(--ease),visibility .8s;
+  background-size:cover;background-position:center;
+}
+.slide.is-active{opacity:1;visibility:visible;transform:scale(1)}
+.slide-1{background-image:linear-gradient(100deg,rgba(10,34,64,.94) 15%,rgba(10,34,64,.45)),linear-gradient(135deg,#ff8f1f,#0a2240)}
+.slide-2{background-image:linear-gradient(100deg,rgba(10,34,64,.94) 15%,rgba(10,34,64,.45)),linear-gradient(135deg,#1d5fbf,#0a2240)}
+.slide-3{background-image:linear-gradient(100deg,rgba(10,34,64,.94) 15%,rgba(10,34,64,.45)),linear-gradient(135deg,#0f8a4d,#0a2240)}
+.slide-4{background-image:linear-gradient(100deg,rgba(10,34,64,.94) 15%,rgba(10,34,64,.45)),linear-gradient(135deg,#7a3bbf,#0a2240)}
+
+.slide-content{width:min(1200px,92%);margin-inline:auto;color:#fff;max-width:640px;padding:2rem 0}
+.slide-tag{
+  display:inline-flex;align-items:center;gap:.45rem;
+  background:var(--saffron);color:#331a00;font-weight:700;font-size:.72rem;
+  letter-spacing:1.4px;text-transform:uppercase;padding:.35rem .9rem;border-radius:999px;margin-bottom:1rem;
+}
+.slide-content h2{color:#fff;font-size:clamp(1.5rem,3.6vw,2.6rem);font-weight:700;margin-bottom:.7rem;letter-spacing:-.5px}
+.slide-content p{color:#c9dbf1;font-size:clamp(.88rem,1.4vw,1.03rem);max-width:520px;margin-bottom:1.4rem}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.55rem;padding:.8rem 1.5rem;border-radius:999px;
+  font-weight:600;font-size:.9rem;background:#fff;color:var(--navy);
+  transition:.28s var(--ease);min-height:44px;
+}
+.btn-ghost:hover{background:var(--saffron);color:#2a1500;gap:.95rem;transform:translateY(-2px)}
+
+.slide-nav{
+  position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);color:#fff;
+  display:grid;place-items:center;backdrop-filter:blur(6px);transition:.25s var(--ease);z-index:5;
+}
+.slide-nav:hover{background:var(--saffron);color:#2a1500;border-color:var(--saffron)}
+.slide-nav.prev{left:2%}
+.slide-nav.next{right:2%}
+.dots{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;gap:.55rem;z-index:5}
+.dots button{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.42);transition:.3s var(--ease)}
+.dots button.is-active{background:var(--saffron);width:30px}
+
+/* ============================================================
+   6. TICKER
+   ============================================================ */
+.ticker{background:linear-gradient(90deg,var(--saffron-d),var(--saffron));color:#2a1500;overflow:hidden;display:flex;align-items:center}
+.ticker-label{
+  flex:0 0 auto;background:var(--navy);color:#fff;padding:.7rem 1.1rem;font-size:.75rem;
+  font-weight:700;letter-spacing:1.2px;text-transform:uppercase;
+  display:flex;align-items:center;gap:.5rem;z-index:2;
+}
+.ticker-track{overflow:hidden;flex:1;position:relative}
+.ticker-move{display:inline-flex;gap:3.5rem;white-space:nowrap;padding:.75rem 1.5rem;animation:scrollx 38s linear infinite;font-weight:600;font-size:.88rem}
+.ticker:hover .ticker-move{animation-play-state:paused}
+.ticker-move a{border-bottom:1.5px solid rgba(42,21,0,.35);transition:.2s}
+.ticker-move a:hover{border-color:#2a1500}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================================================
+   7. SECTIONS
+   ============================================================ */
+.section{padding:3.2rem 0}
+.section-head{margin-bottom:1.6rem}
+.section-head h2{
+  font-size:clamp(1.3rem,2.6vw,1.85rem);font-weight:700;letter-spacing:-.4px;
+  display:flex;align-items:center;gap:.7rem;
+}
+.section-head h2::before{content:"";width:6px;height:28px;border-radius:99px;background:linear-gradient(180deg,var(--saffron),var(--saffron-d));flex:0 0 6px}
+.section-head p{color:var(--muted);font-size:.94rem;margin-top:.35rem;margin-left:1.2rem}
+
+.layout{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:1.6rem;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:.3s var(--ease);min-width:0}
+.card:hover{box-shadow:var(--shadow-lg)}
+
+.tab-btns{display:flex;gap:.3rem;background:#f6f9fd;padding:.55rem .55rem 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab-btn{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.15rem;font-size:.88rem;font-weight:600;
+  color:var(--muted);border-radius:12px 12px 0 0;position:relative;transition:.22s var(--ease);min-height:44px;
+}
+.tab-btn:hover{color:var(--blue);background:#fff}
+.tab-btn.is-active{color:var(--navy);background:#fff}
+.tab-btn.is-active::after{content:"";position:absolute;left:12%;right:12%;bottom:-1px;height:3px;border-radius:99px;background:var(--saffron)}
+.tab-panel{display:none;padding:.6rem}
+.tab-panel.is-active{display:block;animation:fadeUp .35s var(--ease)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.ann-list{max-height:430px;overflow-y:auto;padding-right:.35rem;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.ann-list::-webkit-scrollbar{width:7px}
+.ann-list::-webkit-scrollbar-track{background:#f1f5fa;border-radius:99px}
+.ann-list::-webkit-scrollbar-thumb{background:#c4d4e8;border-radius:99px}
+.ann-list::-webkit-scrollbar-thumb:hover{background:var(--blue)}
+
+.ann{display:flex;gap:.85rem;align-items:flex-start;padding:.85rem .9rem;border-radius:var(--radius-sm);border-left:3px solid transparent;transition:.25s var(--ease)}
+.ann + .ann{border-top:1px solid #f0f4f9}
+.ann:hover{background:var(--blue-soft);border-left-color:var(--saffron);transform:translateX(4px)}
+.ann .badge{
+  flex:0 0 auto;margin-top:.35rem;font-size:.6rem;font-weight:800;letter-spacing:.8px;
+  text-transform:uppercase;background:var(--red);color:#fff;padding:.2rem .45rem;border-radius:5px;
+}
+.ann a{font-size:.9rem;font-weight:500;color:#2d3f57;line-height:1.55;transition:.2s;word-break:break-word}
+.ann a:hover{color:var(--blue)}
+.ann .meta{display:block;font-size:.74rem;color:var(--muted);margin-top:.25rem;font-weight:500}
+
+.side-stack{display:grid;gap:1.4rem}
+.side-card .side-head{
+  padding:.9rem 1.1rem;font-family:'Poppins';font-weight:600;font-size:.95rem;
+  display:flex;align-items:center;gap:.6rem;color:#fff;
+}
+.side-card.focus .side-head{background:linear-gradient(100deg,var(--saffron-d),var(--saffron))}
+.side-card.activity .side-head{background:linear-gradient(100deg,#0f8a4d,#1dbd6b)}
+.side-card .side-head i{font-size:.9rem}
+.side-body{padding:1rem 1.1rem;max-height:230px;overflow-y:auto;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.side-body::-webkit-scrollbar{width:6px}
+.side-body::-webkit-scrollbar-thumb{background:#c4d4e8;border-radius:99px}
+.side-body li{padding:.6rem 0;border-bottom:1px dashed #e8eef6}
+.side-body li:last-child{border-bottom:none}
+.side-body a{font-size:.86rem;font-weight:500;color:#2d3f57;display:flex;gap:.6rem;align-items:flex-start;transition:.22s var(--ease)}
+.side-body a::before{content:"›";color:var(--saffron);font-weight:800;font-size:1.1rem;line-height:1.2;flex:0 0 auto}
+.side-body a:hover{color:var(--blue);transform:translateX(4px)}
+
+.two-col{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap:1.6rem;
+}
+.prose-card{padding:1.8rem;min-width:0}
+.prose-card h2{font-size:1.2rem;font-weight:700;margin-bottom:.9rem;display:flex;align-items:center;gap:.65rem}
+.prose-card h2 i{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;font-size:.95rem;flex:0 0 38px}
+.prose-card.vision h2 i{background:var(--blue-soft);color:var(--blue)}
+.prose-card.about h2 i{background:var(--green-soft);color:var(--green)}
+.prose-card p{font-size:.92rem;color:#41536b;text-align:justify}
+
+.obj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:1rem}
+.obj{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-sm);
+  padding:1.2rem 1.2rem 1.2rem 1.1rem;display:flex;gap:.9rem;align-items:flex-start;
+  transition:.3s var(--ease);position:relative;overflow:hidden;min-width:0;
+}
+.obj::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--saffron),var(--blue));
+  transform:scaleY(0);transform-origin:top;transition:.35s var(--ease);
+}
+.obj:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:#c9dcf3}
+.obj:hover::before{transform:scaleY(1)}
+.obj .num{
+  flex:0 0 34px;width:34px;height:34px;border-radius:10px;
+  background:var(--blue-soft);color:var(--blue);
+  display:grid;place-items:center;font-weight:700;font-size:.85rem;font-family:'Poppins';
+}
+.obj p{font-size:.875rem;color:#3d4f66;min-width:0}
+
+.link-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(215px,100%),1fr));gap:.75rem}
+.link-chip{
+  display:flex;align-items:center;gap:.75rem;background:#fff;border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:.85rem 1rem;font-size:.865rem;font-weight:500;color:#2d3f57;
+  transition:.28s var(--ease);min-height:56px;min-width:0;
+}
+.link-chip i{
+  width:32px;height:32px;flex:0 0 32px;border-radius:9px;display:grid;place-items:center;
+  font-size:.8rem;background:var(--blue-soft);color:var(--blue);transition:.28s var(--ease);
+}
+.link-chip:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:var(--shadow-lg);color:var(--blue)}
+.link-chip:hover i{background:var(--blue);color:#fff;transform:rotate(-6deg) scale(1.06)}
+
+.site-footer{background:linear-gradient(160deg,var(--navy) 0%,#071a30 100%);color:#b9cde6;margin-top:2rem;padding-top:2.8rem}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:2rem;padding-bottom:2.2rem}
+.footer-col h4{color:#fff;font-size:.82rem;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:1rem;font-weight:600}
+.footer-col li{margin-bottom:.55rem}
+.footer-col a{font-size:.855rem;color:#a4bcd8;transition:.22s var(--ease);display:inline-block;padding:.15rem 0}
+.footer-col a:hover{color:var(--saffron);transform:translateX(4px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:1.1rem 0;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.8rem}
+.footer-bottom .socials{display:flex;gap:.6rem}
+.footer-bottom .socials a{
+  width:38px;height:38px;border-radius:9px;display:grid;place-items:center;
+  background:rgba(255,255,255,.08);color:#b9cde6;transition:.25s var(--ease);
+}
+.footer-bottom .socials a:hover{background:var(--saffron);color:#2a1500;transform:translateY(-3px)}
+
+#backTop{
+  position:fixed;right:18px;bottom:18px;width:48px;height:48px;border-radius:14px;
+  background:var(--navy);color:#fff;display:grid;place-items:center;
+  box-shadow:var(--shadow-lg);opacity:0;visibility:hidden;transform:translateY(14px);
+  transition:.3s var(--ease);z-index:800;
+}
+#backTop.show{opacity:1;visibility:visible;transform:none}
+#backTop:hover{background:var(--saffron);color:#2a1500}
+
+/* ============================================================
+   TOAST NOTIFICATION
+   ============================================================ */
+#toast{
+  position:fixed;
+  left:50%;
+  bottom:28px;
+  transform:translate(-50%, 24px);
+  background:linear-gradient(120deg,var(--navy),var(--navy-2));
+  color:#fff;
+  display:flex;align-items:center;gap:.85rem;
+  padding:.9rem 1.3rem;
+  border-radius:14px;
+  box-shadow:0 18px 45px rgba(10,34,64,.35);
+  border:1px solid rgba(255,255,255,.12);
+  opacity:0;visibility:hidden;
+  transition:opacity .35s var(--ease),transform .35s var(--ease),visibility .35s;
+  z-index:2000;
+  max-width:min(440px,calc(100vw - 32px));
+  width:max-content;
+  font-size:.9rem;
+  font-weight:500;
+  line-height:1.4;
+}
+#toast.show{
+  opacity:1;visibility:visible;
+  transform:translate(-50%, 0);
+}
+#toast .toast-icon{
+  width:38px;height:38px;flex:0 0 38px;border-radius:11px;
+  display:grid;place-items:center;font-size:1rem;
+  background:var(--saffron);color:#2a1500;
+  box-shadow:0 4px 12px rgba(255,143,31,.4);
+}
+#toast .toast-body{flex:1;min-width:0}
+#toast .toast-body strong{
+  display:block;font-family:'Poppins';font-weight:600;
+  font-size:.92rem;margin-bottom:.15rem;color:#fff;
+}
+#toast .toast-body span{color:#c9dbf1;font-size:.84rem;display:block}
+#toast .toast-close{
+  width:30px;height:30px;flex:0 0 30px;border-radius:9px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.1);color:#fff;
+  transition:.25s var(--ease);cursor:pointer;
+}
+#toast .toast-close:hover{background:var(--saffron);color:#2a1500;transform:rotate(90deg)}
+
+@media (max-width:480px){
+  #toast{
+    left:12px;right:12px;
+    transform:translateY(24px);
+    width:auto;
+    max-width:none;
+    padding:.8rem 1rem;
+    bottom:18px;
+  }
+  #toast.show{transform:translateY(0)}
+}
+
+/* ============================================================
+   8. TABLET (<=992)
+   ============================================================ */
+@media (max-width:992px){
+  .layout{grid-template-columns:1fr;gap:1.4rem}
+  .side-stack{grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));display:grid}
+  .side-body{max-height:240px}
+
+  .nav-toggle{display:inline-flex}
+  .nav-inner{position:relative}
+
+  .nav-list{
+    position:fixed;top:0;left:0;right:auto;
+    width:min(400px,88vw);
+    height:100vh;height:100dvh;
+    flex-direction:column;align-items:stretch;flex-wrap:nowrap;gap:0;
+    padding:0 0 1.5rem;margin:0;
+    background:#fff;border-right:1px solid var(--line);
+    box-shadow:24px 0 60px rgba(10,34,64,.25);
+    transform:translateX(-105%);visibility:hidden;
+    transition:transform .42s cubic-bezier(.2,.7,.3,1),visibility .42s;
+    overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+    z-index:1100;
+  }
+  .nav-list.show{transform:translateX(0);visibility:visible}
+  .nav-backdrop{display:block}
+
+  .drawer-top{
+    display:flex !important;align-items:center;gap:.85rem;padding:1rem 1.1rem;
+    background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 60%,#1b4f8f 100%);
+    color:#fff;position:sticky;top:0;z-index:3;
+    flex:0 0 auto;box-shadow:0 6px 18px rgba(10,34,64,.18);
+  }
+  .drawer-top::after{
+    content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,143,31,.35),transparent 70%);pointer-events:none;
+  }
+  .drawer-logo{
+    width:46px;height:46px;flex:0 0 46px;object-fit:contain;
+    background:#fff;border-radius:12px;padding:5px;
+    box-shadow:0 8px 18px rgba(0,0,0,.28);position:relative;z-index:2;
+  }
+  .drawer-brand-text{flex:1;min-width:0;position:relative;z-index:2}
+  .drawer-brand-text strong{display:block;font-family:'Poppins';font-weight:600;font-size:.95rem;line-height:1.25}
+  .drawer-brand-text small{display:block;font-size:.68rem;color:#a9c4e6;letter-spacing:1.4px;text-transform:uppercase;margin-top:.15rem}
+  .drawer-close{
+    width:40px;height:40px;flex:0 0 40px;border-radius:11px;
+    background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);
+    display:grid;place-items:center;color:#fff;
+    transition:.3s var(--ease);position:relative;z-index:2;font-size:1rem;
+  }
+  .drawer-close:hover{background:var(--saffron);color:#2a1500;transform:rotate(90deg) scale(1.05)}
+
+  .nav-list > li:not(.drawer-top){
+    width:100%;border-bottom:1px solid #eef2f8;flex:0 0 auto;
+  }
+  .nav-list > li:not(.drawer-top) > a,
+  .nav-list > li:not(.drawer-top) > .drop-btn{
+    display:flex;width:100%;justify-content:space-between;align-items:center;
+    padding:1rem 1.2rem;font-size:.94rem;font-weight:600;color:#1e2f44;
+    border-radius:0;background:transparent;min-height:56px;text-align:left;position:relative;
+    transition:background .22s var(--ease),color .22s var(--ease);
+  }
+  .nav-list > li:not(.drawer-top) > a::before,
+  .nav-list > li:not(.drawer-top) > .drop-btn::before{
+    content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+    width:4px;height:0;border-radius:0 4px 4px 0;background:var(--saffron);
+    transition:height .3s var(--ease);
+  }
+  .nav-list > li:not(.drawer-top) > a:hover::before,
+  .nav-list > li:not(.drawer-top) > .drop-btn:hover::before,
+  .nav-list > li.open > .drop-btn::before{height:56%}
+
+  .nav-list > li:not(.drawer-top) > a:hover,
+  .nav-list > li:not(.drawer-top) > .drop-btn:hover,
+  .nav-list > li.open > .drop-btn{background:var(--blue-soft);color:var(--blue)}
+
+  .nav-list > li:not(.drawer-top) > .drop-btn i.fa-chevron-down{
+    font-size:.7rem;transition:transform .3s var(--ease);
+    width:24px;height:24px;border-radius:8px;display:grid;place-items:center;
+    background:#eef3fa;color:#5c6c80;
+  }
+  .nav-list > li.open > .drop-btn i.fa-chevron-down{
+    transform:rotate(180deg);background:var(--blue);color:#fff;
+  }
+  .nav-list > li:not(.drawer-top) > a i:first-child:not(.fa-chevron-right){
+    margin-right:.55rem;color:var(--saffron-d);
+  }
+  .nav-list > li > a.hl::before{margin-right:.4rem}
+
+  .drop{
+    position:static;opacity:1;visibility:visible;transform:none;
+    box-shadow:none;border:none;border-radius:0;background:#f7fafd;
+    display:none;padding:0;margin:0;width:100%;min-width:0;
+    border-top:1px solid #eef2f8;
+    animation:drawerSlide .3s var(--ease);
+  }
+  @keyframes drawerSlide{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+  .nav-list > li.open > .drop{display:block}
+  .drop > li{width:100%;border-bottom:1px solid #eef2f8;flex:0 0 auto}
+  .drop > li:last-child{border-bottom:none}
+  .drop a,
+  .drop > li > .drop-btn{
+    display:flex;width:100%;justify-content:space-between;align-items:center;
+    padding:.85rem 1.2rem .85rem 2.4rem;font-size:.875rem;font-weight:500;color:#33465e;
+    border-radius:0;background:transparent;min-height:48px;text-align:left;
+    transition:background .2s var(--ease),color .2s var(--ease),padding .2s var(--ease);
+  }
+  .drop a:hover,
+  .drop > li > .drop-btn:hover{background:var(--blue-soft);color:var(--blue);padding-left:2.6rem}
+  .drop a i,
+  .drop > li > .drop-btn i{font-size:.6rem;opacity:.55}
+  .drop .drop{background:#eef4fb;border-top:1px solid #e3ecf7;display:none}
+  .drop li.open > .drop{display:block}
+  .drop .drop a,
+  .drop .drop > li > .drop-btn{padding-left:3.4rem;font-size:.83rem}
+  .drop .drop a:hover,
+  .drop .drop > li > .drop-btn:hover{padding-left:3.6rem}
+
+  .section{padding:2.6rem 0}
+  .prose-card{padding:1.5rem}
+  .prose-card p{text-align:left}
+}
+
+/* ============================================================
+   9. MOBILE (<=640)
+   ============================================================ */
+@media (max-width:640px){
+  .header-inner{justify-content:center;text-align:center;padding:.9rem 0;gap:.7rem}
+  .brand{flex-direction:column;gap:.55rem;text-align:center;width:100%}
+  .brand-logo{width:56px;height:56px;flex-basis:56px}
+  .brand-text strong{font-size:.95rem;line-height:1.3}
+  .brand-text small{font-size:.7rem;letter-spacing:1.2px}
+  .header-tools{justify-content:center;width:100%;gap:.45rem}
+  .tool-link{padding:.5rem .85rem;font-size:.8rem}
+  .lang-switch a,.lang-switch button{padding:.4rem .75rem;font-size:.78rem}
+
+  .slides{height:auto;min-height:400px;padding:1.5rem 0 4.5rem}
+  .slide{position:absolute;inset:0;padding:1.6rem 0 5rem}
+  .slide-content{padding:0;max-width:100%}
+  .slide-tag{font-size:.68rem;padding:.3rem .75rem}
+  .slide-content h2{font-size:1.4rem}
+  .slide-content p{font-size:.88rem;margin-bottom:1.1rem}
+  .btn-ghost{padding:.7rem 1.25rem;font-size:.85rem}
+
+  .slide-nav{top:auto;bottom:14px;transform:none;width:38px;height:38px}
+  .slide-nav.prev{left:14px;right:auto}
+  .slide-nav.next{right:14px;left:auto}
+
+  .dots{
+    bottom:22px;left:50%;transform:translateX(-50%);
+    max-width:calc(100% - 120px);
+    justify-content:center;flex-wrap:nowrap;
+  }
+
+  .ticker{flex-wrap:nowrap}
+  .ticker-label{font-size:.66rem;padding:.55rem .75rem;letter-spacing:.8px}
+  .ticker-label i{display:none}
+  .ticker-move{font-size:.82rem;gap:2rem;padding:.65rem 1.1rem;animation-duration:28s}
+
+  .section{padding:2.2rem 0}
+  .section-head{margin-bottom:1.1rem}
+  .section-head h2::before{height:22px;width:5px;flex-basis:5px}
+  .section-head p{margin-left:1rem;font-size:.88rem}
+
+  .tab-btns{padding:.4rem .4rem 0}
+  .tab-btn{padding:.65rem .85rem;font-size:.82rem;gap:.35rem}
+
+  .ann{padding:.75rem .7rem;gap:.65rem}
+  .ann a{font-size:.86rem}
+  .ann-list{max-height:380px}
+
+  .side-stack{grid-template-columns:1fr}
+  .side-body{max-height:200px}
+  .side-body a{font-size:.85rem}
+
+  .two-col{grid-template-columns:1fr}
+  .obj-grid{grid-template-columns:1fr;gap:.75rem}
+  .link-grid{grid-template-columns:1fr;gap:.55rem}
+
+  .prose-card{padding:1.2rem}
+  .prose-card h2{font-size:1.08rem}
+  .prose-card p{font-size:.88rem}
+  .prose-card h2 i{width:34px;height:34px;flex-basis:34px;font-size:.85rem}
+
+  .obj{padding:1rem}
+  .obj p{font-size:.85rem}
+
+  .link-chip{padding:.75rem .9rem;font-size:.85rem;min-height:52px}
+  .link-chip i{width:30px;height:30px;flex-basis:30px;font-size:.78rem}
+
+  .site-footer{padding-top:2rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:1.4rem;padding-bottom:1.6rem}
+  .footer-col h4{font-size:.76rem;margin-bottom:.75rem}
+  .footer-col a{font-size:.82rem}
+  .footer-bottom{justify-content:center;text-align:center;padding:1rem 0;font-size:.76rem}
+  .footer-bottom .socials{justify-content:center;width:100%}
+
+  #backTop{right:12px;bottom:12px;width:44px;height:44px;border-radius:12px}
+}
+
+/* ============================================================
+   10. SMALL MOBILE (<=400)
+   ============================================================ */
+@media (max-width:400px){
+  .container{width:94%}
+  .brand-text strong{font-size:.88rem}
+  .brand-text small{font-size:.65rem;letter-spacing:1px}
+  .tool-link{padding:.45rem .7rem;font-size:.75rem}
+  .tool-link i{display:none}
+  .lang-switch a,.lang-switch button{padding:.35rem .65rem;font-size:.75rem;min-width:36px}
+
+  .slide-content h2{font-size:1.25rem}
+  .slide-content p{font-size:.84rem}
+  .slides{min-height:420px}
+
+  .footer-grid{grid-template-columns:1fr;gap:1.2rem}
+  .section{padding:1.9rem 0}
+  .side-body a{font-size:.82rem}
+
+  .nav-list{width:92vw}
+  .drawer-top{padding:.9rem 1rem;gap:.7rem}
+  .drawer-logo{width:42px;height:42px;flex-basis:42px}
+  .drawer-brand-text strong{font-size:.88rem}
+  .drawer-brand-text small{font-size:.62rem;letter-spacing:1.1px}
+  .drawer-close{width:36px;height:36px;flex-basis:36px}
+}
+
+/* ============================================================
+   11. VERY SMALL (<=340)
+   ============================================================ */
+@media (max-width:340px){
+  .container{width:94%}
+  .slide-nav{width:34px;height:34px;bottom:12px}
+  .slide-nav.prev{left:10px}
+  .slide-nav.next{right:10px}
+  .dots{bottom:18px;max-width:calc(100% - 90px)}
+  .dots button{width:8px;height:8px}
+  .dots button.is-active{width:22px}
+  .obj .num{flex:0 0 30px;width:30px;height:30px;font-size:.78rem}
+}
+
+/* ============================================================
+   12. REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+  .ticker-move{animation:none}
+}
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="CBSE Academics Home">
+      <img class="brand-logo" src="image-removebg-preview.png" alt="CBSE Logo" width="60" height="60" loading="eager">
+      <span class="brand-text">
+        <strong>Central Board of Secondary Education</strong>
+        <small>Academics Unit</small>
+      </span>
+    </a>
+    <div class="header-tools">
+      <a class="tool-link" href="https://cbseacademic.nic.in/FAQ.html"><i class="fa-regular fa-circle-question"></i> FAQ</a>
+      <a class="tool-link" href="https://cbseacademic.nic.in/contactus.html"><i class="fa-regular fa-envelope"></i> Contact</a>
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a href="index.html" class="is-active">EN</a>
+        <button type="button" id="hindiBtn" aria-label="Switch to Hindi">हिं</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ NAV ============================ -->
+<nav class="mainnav" aria-label="Main navigation">
+  <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+
+  <div class="container nav-inner">
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
+      <i class="fa-solid fa-bars"></i> Menu
+    </button>
+
+    <ul class="nav-list" id="navList">
+
+      <li class="drawer-top">
+        <img class="drawer-logo" src="image-removebg-preview.png" alt="CBSE Logo">
+        <div class="drawer-brand-text">
+          <strong>CBSE Academics</strong>
+          <small>Navigation</small>
+        </div>
+        <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </li>
+
+      <li><a href="https://cbseacademic.nic.in/ai.html"><i class="fa-solid fa-robot"></i> AI</a></li>
+      <li><a href="https://cbseacademic.nic.in/cbe/index.html" target="_blank" rel="noopener">CBE Resources</a></li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">CENBOSEC <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JulDec25.html">Edition Jul–Dec 25</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JanJun25.html">Edition Jan–Jun 25</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JulDec24.html">Edition Jul–Dec 24</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JanJun24.html">Edition Jan–Jun 24</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JulDec23.html">Edition Jul–Dec 23</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JanJun23.html">Edition Jan–Jun 23</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec_JulDec22.html">Edition Jul–Dec 22</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec.html">Launch Video</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">Circulars <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/circulars.html">Latest</a></li>
+          <li><a href="https://cbseacademic.nic.in/circulars_archive.html">Archive</a></li>
+          <li>
+            <button class="drop-btn" aria-expanded="false">Compendium <i class="fa-solid fa-chevron-right"></i></button>
+            <ul class="drop">
+              <li><a href="https://cbseacademic.nic.in/web_material/CBSE-Updates(Compendium_of_CBSE%20Circulars)Vol-I.pdf" target="_blank" rel="noopener">CBSE Updates Vol 1</a></li>
+              <li><a href="https://cbseacademic.nic.in/web_material/CBSE_Update(Compendium_of_CBSE%20Circulars)Vol-II.pdf" target="_blank" rel="noopener">CBSE Updates Vol 2</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">Curriculum <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/curriculum_2027.html">Curriculum 2026–27</a></li>
+          <li><a href="https://cbseacademic.nic.in/curriculum_2026.html">Curriculum 2025–26</a></li>
+          <li><a href="https://cbseacademic.nic.in/curriculum_2025.html">Curriculum 2024–25</a></li>
+          <li><a href="https://cbseacademic.nic.in/curriculum_2024.html">Curriculum 2023–24</a></li>
+          <li><a href="https://cbseacademic.nic.in/curriculum_archive.html">Curriculum Archive</a></li>
+        </ul>
+      </li>
+
+      <li><a href="https://cbseacademic.nic.in/ct-ai.html" class="hl">CT &amp; AI</a></li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">Disclosure <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/web_material/Manuals/SEP_FIN2021.pdf" target="_blank" rel="noopener">Stakeholder Engagement Plan (SEP)</a></li>
+          <li><a href="https://cbseacademic.nic.in/web_material/Manuals/ESEP_FIN2021.pdf" target="_blank" rel="noopener">Environmental &amp; Social Commitment Plan</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">DRR <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/web_material/Manuals/DisasterRiskReduction24.pdf" target="_blank" rel="noopener">Handbook</a></li>
+          <li><a href="https://cbseacademic.nic.in/drr_video.html">Video</a></li>
+          <li><a href="https://cbseacademic.nic.in/drr_flipbook.html">Flipbook</a></li>
+        </ul>
+      </li>
+
+      <li><a href="https://cbseacademic.nic.in/fln/index.html" target="_blank" rel="noopener">FLN Corner</a></li>
+      <li><a href="https://cbseacademic.nic.in/manual.html">Handbooks</a></li>
+      <li><a href="https://cbseacademic.nic.in/heritage/index.html" target="_blank" rel="noopener">Heritage Education</a></li>
+      <li><a href="https://cbseit.in/cbse/web/hubs" target="_blank" rel="noopener">HoL</a></li>
+      <li><a href="https://cbseacademic.nic.in/hpc.html" target="_blank" rel="noopener">HPC</a></li>
+      <li><a href="https://cbseit.in/cbse/2022/Skill/Home/Home" target="_blank" rel="noopener">Knowledge &amp; Skill</a></li>
+      <li><a href="https://cbseacademic.nic.in/lifeskills/index.html" target="_blank" rel="noopener">Life Skills</a></li>
+      <li><a href="https://cbseacademic.nic.in/gallery.html" target="_blank" rel="noopener">Media Gallery</a></li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">Publications <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/publication_sqps.html" target="_blank" rel="noopener">E-Books &amp; Supportive Material</a></li>
+          <li><a href="https://cbseacademic.nic.in/cbse-publication.html">CBSE Publication</a></li>
+          <li><a href="https://cbseacademic.nic.in/annualreport.html" target="_blank" rel="noopener">Annual Report</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">Question Bank <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li><a href="https://cbseacademic.nic.in/qbclass10.html">Class X</a></li>
+          <li><a href="https://cbseacademic.nic.in/qbclass12.html">Class XII</a></li>
+          <li><a href="https://cbseacademic.nic.in/additionalPQ.html">Additional Practice Questions</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <button class="drop-btn" aria-expanded="false">Sample Papers <i class="fa-solid fa-chevron-down"></i></button>
+        <ul class="drop">
+          <li>
+            <button class="drop-btn" aria-expanded="false">SQP 2025–2026 <i class="fa-solid fa-chevron-right"></i></button>
+            <ul class="drop">
+              <li><a href="https://cbseacademic.nic.in/SQP_CLASSXII_2025-26.html">Class XII</a></li>
+              <li><a href="https://cbseacademic.nic.in/SQP_CLASSX_2025-26.html">Class X</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="drop-btn" aria-expanded="false">SQP 2024–2025 <i class="fa-solid fa-chevron-right"></i></button>
+            <ul class="drop">
+              <li><a href="https://cbseacademic.nic.in/SQP_CLASSXII_2024-25.html">Class XII</a></li>
+              <li><a href="https://cbseacademic.nic.in/SQP_CLASSX_2024-25.html">Class X</a></li>
+            </ul>
+          </li>
+          <li>
+            <button class="drop-btn" aria-expanded="false">SQP 2023–2024 <i class="fa-solid fa-chevron-right"></i></button>
+            <ul class="drop">
+              <li><a href="https://cbseacademic.nic.in/SQP_CLASSXII_2023-24.html">Class XII</a></li>
+              <li><a href="https://cbseacademic.nic.in/SQP_CLASSX_2023-24.html">Class X</a></li>
+            </ul>
+          </li>
+          <li><a href="https://cbseacademic.nic.in/sqp_archive.html">SQP Archive</a></li>
+        </ul>
+      </li>
+
+      <li><a href="https://cbseacademic.nic.in/results.html">Results</a></li>
+      <li><a href="https://cbseacademic.nic.in/safal/index.html">SAFAL</a></li>
+      <li><a href="https://cbseit.in/cbse/2025/Sahodaya/" target="_blank" rel="noopener">Sahodaya</a></li>
+      <li><a href="https://sic.mic.gov.in/" target="_blank" rel="noopener">SIC</a></li>
+      <li><a href="https://skilleducation.cbseit.in/" class="green" target="_blank" rel="noopener">Skill Education</a></li>
+      <li><a href="https://academic.cbseit.in/sports" target="_blank" rel="noopener">Sports</a></li>
+      <li><a href="https://cbseacadit.nic.in/sqaa" target="_blank" rel="noopener">SQAAF</a></li>
+      <li><a href="https://cbseit.in/cbse/2022/ET/frmListing" target="_blank" rel="noopener">Training</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- ============================ HERO ============================ -->
+  <section class="hero" aria-label="Featured highlights">
+    <div class="slides" id="slides">
+
+      <a class="slide slide-1 is-active" href="https://ndl.education.gov.in/" target="_blank" rel="noopener">
+        <div class="slide-content">
+          <span class="slide-tag"><i class="fa-solid fa-star"></i> Featured</span>
+          <h2>Kavya Utsav 2026</h2>
+          <p>Celebrating the poetic voice of young India. Discover resources, readings and creative expression on the National Digital Library.</p>
+          <span class="btn-ghost">Explore now <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <div class="slide slide-2">
+        <div class="slide-content">
+          <span class="slide-tag"><i class="fa-solid fa-shield-halved"></i> Awareness</span>
+          <h2>Cyber Crime 1930</h2>
+          <p>Stay alert, stay safe online. Report cyber crime incidents immediately on the national helpline 1930.</p>
+          <a class="btn-ghost" href="https://cybercrime.gov.in/" target="_blank" rel="noopener">Report now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <a class="slide slide-3" href="https://cbseacademic.nic.in/safal/index.html" target="_blank" rel="noopener">
+        <div class="slide-content">
+          <span class="slide-tag"><i class="fa-solid fa-chart-line"></i> Assessment</span>
+          <h2>SAFAL</h2>
+          <p>Structured Assessment for Analysing Learning — a competency-based assessment framework for foundational learning.</p>
+          <span class="btn-ghost">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a class="slide slide-4" href="https://prerana.education.gov.in/" target="_blank" rel="noopener">
+        <div class="slide-content">
+          <span class="slide-tag"><i class="fa-solid fa-seedling"></i> Values</span>
+          <h2>Prerana</h2>
+          <p>An experiential learning programme rooted in Indian values, designed to nurture leadership in young learners.</p>
+          <span class="btn-ghost">Discover <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+    </div>
+
+    <button class="slide-nav prev" id="prevSlide" aria-label="Previous slide"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="slide-nav next" id="nextSlide" aria-label="Next slide"><i class="fa-solid fa-chevron-right"></i></button>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <!-- ============================ TICKER ============================ -->
+  <div class="ticker" role="region" aria-label="Latest updates">
+    <span class="ticker-label"><i class="fa-solid fa-bullhorn"></i> Updates</span>
+    <div class="ticker-track">
+      <div class="ticker-move">
+        <span><a href="https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Curriculum_SecP1_2026-27.pdf" target="_blank" rel="noopener">Scheme of Studies — Secondary Curriculum</a></span>
+        <span><a href="https://cbseacademic.nic.in/curriculum_2027.html">Detailed Curriculum 2026–27</a></span>
+        <span><a href="https://cbseacademic.nic.in/web_material/CurriculumMain27/CTAI_Pri_2026-27.pdf" target="_blank" rel="noopener">Curriculum Framework for Computational Thinking &amp; AI (Classes III–VIII)</a></span>
+        <span><a href="https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Curriculum_SecP1_2026-27.pdf" target="_blank" rel="noopener">Scheme of Studies — Secondary Curriculum</a></span>
+        <span><a href="https://cbseacademic.nic.in/curriculum_2027.html">Detailed Curriculum 2026–27</a></span>
+        <span><a href="https://cbseacademic.nic.in/web_material/CurriculumMain27/CTAI_Pri_2026-27.pdf" target="_blank" rel="noopener">Curriculum Framework for Computational Thinking &amp; AI (Classes III–VIII)</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================ ANNOUNCEMENTS + SIDEBAR ============================ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Announcements</h2>
+        <p>Latest circulars, notifications and capacity-building programmes from the Academics Unit.</p>
+      </div>
+
+      <div class="layout">
+        <div class="card">
+          <div class="tab-btns" role="tablist">
+            <button class="tab-btn is-active" data-tab="academic" role="tab">
+              <i class="fa-solid fa-graduation-cap"></i> Academic
+            </button>
+            <button class="tab-btn" data-tab="skill" role="tab">
+              <i class="fa-solid fa-screwdriver-wrench"></i> Skill Education
+            </button>
+          </div>
+
+          <div class="tab-panel is-active" id="academic" role="tabpanel">
+            <div class="ann-list">
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/58_Circular_2026.pdf" target="_blank" rel="noopener">Veer Gatha 6.0 – reg.<span class="meta">Circular No. 58 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/57_Circular_2026.pdf" target="_blank" rel="noopener">Celebration of National Sports Day 2026 – reg.<span class="meta">Circular No. 57 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/56_Circular_2026.pdf" target="_blank" rel="noopener">Opening of Amrit Udyan, Rashtrapati Bhavan – reg.<span class="meta">Circular No. 56 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/115_Notification_2026.pdf" target="_blank" rel="noopener">Invitation for sending entries for August 2026 edition of <em>Sapnon ki Udaan</em> — an e-Magazine published by NCERT – reg.<span class="meta">Notification No. 115 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/55_Circular_2026.pdf" target="_blank" rel="noopener">Implementation of “Nasha Mukt Vidyalaya Abhiyan” and Registration on Nasha Mukt Vidyalaya (NMV) Portal – reg.<span class="meta">Circular No. 55 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/54_Circular_2026.pdf" target="_blank" rel="noopener">Participation in Swachh Evam Harit Vidyalaya Rating (SHVR) 2026–27<span class="meta">Circular No. 54 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/53_Circular_2026.pdf" target="_blank" rel="noopener">Celebration of Har Ghar Tiranga Campaign 2026 – reg.<span class="meta">Circular No. 53 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/98_Notification_2026.pdf" target="_blank" rel="noopener">Student Outreach Programme – Invitation to participate in Webinar on “Cyber Security and Online Fraud” on 06.08.2026 – reg.<span class="meta">Notification No. 98 / 2026</span></a></div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="skill" role="tabpanel">
+            <div class="ann-list">
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/131_Notification_2026.pdf" target="_blank" rel="noopener">Webinar on Career Guidance (My Career Advisor, Tamanna Aptitude Test, etc.) for School Leaders, Educators and School Counsellors.<span class="meta">Notification No. 131 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/130_Notification_2026.pdf" target="_blank" rel="noopener">One Day Capacity Building Programme for teachers — skill subject “Office Procedures &amp; Practices (824)” (Offline Mode)<span class="meta">Notification No. 130 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/129_Notification_2026.pdf" target="_blank" rel="noopener">One Day Capacity Building Programme for teachers — skill subject “Shorthand English (825)” (Offline Mode)<span class="meta">Notification No. 129 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/128_Notification_2026.pdf" target="_blank" rel="noopener">One Day Capacity Building Programme for teachers — skill subject “Office Procedures &amp; Practices (824)” (Offline Mode)<span class="meta">Notification No. 128 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/127_Notification_2026.pdf" target="_blank" rel="noopener">Capacity Building Programmes on the ‘Kaushal Vikas’ textbook for teachers in face-to-face / offline mode at Haryana and Uttar Pradesh<span class="meta">Notification No. 127 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/126_Notification_2026.pdf" target="_blank" rel="noopener">Capacity Building Programmes for teachers regarding mandatory implementation of Skill Education in Classes VI–VIII (offline mode at multiple locations)<span class="meta">Notification No. 126 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/125_Notification_2026.pdf" target="_blank" rel="noopener">Capacity Building Programmes on the ‘Kaushal Vikas’ textbook for teachers in face-to-face / offline mode in Punjab — <strong>Corrigendum</strong> also available<span class="meta">Notification No. 125 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/124_Notification_2026.pdf" target="_blank" rel="noopener">CBSE Skill Expo and Guidance Festival 2026–27: Intimation of Venues for Regional Events under Prayagraj, Lucknow, Ranchi and Patna ROs – reg.<span class="meta">Notification No. 124 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/123_Notification_2026.pdf" target="_blank" rel="noopener">Results of Skill Expo 2026–27: Regional Events held at Amritsar, Gurugram, Ambala and Shimla<span class="meta">Notification No. 123 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/122_Notification_2026.pdf" target="_blank" rel="noopener">Rescheduling of the 4th National Summit on “Facilitating School-to-Work Transition” – reg.<span class="meta">Notification No. 122 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/121_Notification_2026.pdf" target="_blank" rel="noopener">Capacity Building Programme for teachers — skill subject “Beauty &amp; Wellness” (Subject Codes: 407 &amp; 807) for Classes IX–X and XI–XII (Offline Mode)<span class="meta">Notification No. 121 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/120_Notification_2026.pdf" target="_blank" rel="noopener">One-Day Teacher Training / Capacity Building Programme for teachers teaching Skill Subjects in CBSE-affiliated schools — September 2026 – reg.<span class="meta">Notification No. 120 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/119_Notification_2026.pdf" target="_blank" rel="noopener">Exposure Visit of CBSE School Principals to Organizations / Institutions of Eminence in India<span class="meta">Notification No. 119 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/118_Notification_2026.pdf" target="_blank" rel="noopener">Extension of last date for YICC 2026–27 Regional Level registration – reg.<span class="meta">Notification No. 118 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/117_Notification_2026.pdf" target="_blank" rel="noopener">Capacity Building Programmes for teachers of Class IX on the Kaushal Vikas textbook at Sonipat, Gurugram, Lucknow and Varanasi<span class="meta">Notification No. 117 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/116_Notification_2026.pdf" target="_blank" rel="noopener">Capacity Building Programmes on the Kaushal Bodh and Kaushal Vikas textbooks for teachers in Chhattisgarh — Durg, Ambikapur, Raigarh, Bilaspur and Bastar<span class="meta">Notification No. 116 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/114_Notification_2026.pdf" target="_blank" rel="noopener">Postponement of Skill Expo &amp; Guidance Festival 2026–27 Regional Events — Dehradun RO Jurisdiction – reg.<span class="meta">Notification No. 114 / 2026</span></a></div>
+              <div class="ann"><span class="badge">New</span><a href="https://cbseacademic.nic.in/web_material/Notifications/2026/112_Notification_2026.pdf" target="_blank" rel="noopener">Change in Date of Exposure Visit to FDDI, Patna from 31st August 2026 to 07th September 2026<span class="meta">Notification No. 112 / 2026</span></a></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side-stack">
+          <div class="card side-card focus">
+            <div class="side-head"><i class="fa-solid fa-crosshairs"></i> In Focus</div>
+            <ul class="side-body">
+              <li><a href="https://cbseacademic.nic.in/web_material/CurriculumMain27/SecPart1/Curriculum_SecP1_2026-27.pdf" target="_blank" rel="noopener">Scheme of Studies — Secondary Curriculum</a></li>
+              <li><a href="https://cbseacademic.nic.in/curriculum_2027.html">Detailed Curriculum 2026–27</a></li>
+              <li><a href="https://cbseacademic.nic.in/web_material/CurriculumMain27/CTAI_Pri_2026-27.pdf" target="_blank" rel="noopener">Curriculum Framework for Computational Thinking (CT) and Artificial Intelligence (AI) for Classes III–VIII</a></li>
+            </ul>
+          </div>
+
+          <div class="card side-card activity">
+            <div class="side-head"><i class="fa-solid fa-lightbulb"></i> Activity Corner</div>
+            <ul class="side-body">
+              <li><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/28_Circular_2026.pdf" target="_blank" rel="noopener">Engagement of Schools for amplifying the message of Bharat Innovates 2026 event – reg.</a></li>
+              <li><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/22_Circular_2026.pdf" target="_blank" rel="noopener">Observation of Jal Pakhwada 2026 – reg.</a></li>
+              <li><a href="https://cbseacademic.nic.in/web_material/Circulars/2026/16_Circular_2026.pdf" target="_blank" rel="noopener">NCERT Webinar Series on New Textbooks for Grade IX (2026–27) – reg.</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ VISION & ABOUT ============================ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2>About the Academics Unit</h2>
+        <p>Our vision, mandate and the values that drive academic excellence in CBSE-affiliated schools.</p>
+      </div>
+
+      <div class="two-col">
+        <article class="card prose-card vision">
+          <h2><i class="fa-solid fa-eye"></i> CBSE Vision</h2>
+          <p>The CBSE envisions a robust, vibrant and holistic school education that will engender excellence in every sphere of human endeavour. The Board is committed to providing quality education to promote intellectual, social and cultural vivacity among its learners. It works towards evolving a learning process and environment which empowers future citizens to become global leaders in the emerging knowledge society. The Board advocates Continuous and Comprehensive Evaluation with an emphasis on the holistic development of learners, and commits itself to providing a stress-free learning environment that develops competent, confident and enterprising citizens who will promote harmony and peace.</p>
+        </article>
+
+        <article class="card prose-card about">
+          <h2><i class="fa-solid fa-book-open-reader"></i> About the Unit</h2>
+          <p>The goal of the Academic, Training, Innovation and Research Unit of the Central Board of Secondary Education is to achieve academic excellence by conceptualising policies and their operational planning to ensure balanced academic activities in schools affiliated to the Board. The Unit strives to provide Scheme of Studies, curriculum, academic guidelines, textual material, support material, enrichment activities and capacity building programmes. The Unit functions according to the broader objectives set in the National Curriculum Framework–2005 and in consonance with the various policies and acts passed by the Government of India from time to time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ OBJECTIVES ============================ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2>Major Objectives</h2>
+        <p>Key mandates that guide the Academics Unit's day-to-day work.</p>
+      </div>
+
+      <div class="obj-grid">
+        <div class="obj"><span class="num">01</span><p>To define appropriate approaches to academic activities to provide stress-free, child-centred and holistic education to all children without compromising on quality.</p></div>
+        <div class="obj"><span class="num">02</span><p>To analyse and monitor the quality of academic activities by collecting feedback from different stakeholders.</p></div>
+        <div class="obj"><span class="num">03</span><p>To develop norms for implementation of various academic activities including quality issues; to control and coordinate the implementation of academic and training programmes of the Board.</p></div>
+        <div class="obj"><span class="num">04</span><p>To adapt and innovate methods to achieve academic excellence in conformity with psychological, pedagogical and social principles.</p></div>
+        <div class="obj"><span class="num">05</span><p>To encourage schools to document the progress of students in a teacher- and student-friendly way.</p></div>
+        <div class="obj"><span class="num">06</span><p>To propose plans to achieve quality benchmarks in school education consistent with the national goals.</p></div>
+        <div class="obj"><span class="num">07</span><p>To organise various capacity building and empowerment programmes to update the professional competency of teachers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ QUICK LINKS ============================ -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <h2>Quick Navigation</h2>
+        <p>Frequently used destinations — everything in one place.</p>
+      </div>
+
+      <div class="link-grid">
+        <a class="link-chip" href="http://www.cbse.nic.in/" target="_blank" rel="noopener"><i class="fa-solid fa-house"></i> CBSE Home</a>
+        <a class="link-chip" href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener"><i class="fa-solid fa-book"></i> NCERT Textbooks</a>
+        <a class="link-chip" href="https://training.cbseit.in/training/" target="_blank" rel="noopener"><i class="fa-solid fa-chalkboard-user"></i> Training / CBP Portal</a>
+        <a class="link-chip" href="https://www.cbse.gov.in/cbsenew/cbse.html" target="_blank" rel="noopener"><i class="fa-solid fa-bullhorn"></i> Media &amp; Public Relations</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/tenders.html" target="_blank" rel="noopener"><i class="fa-solid fa-file-contract"></i> Tenders</a>
+        <a class="link-chip" href="https://www.youtube.com/watch?v=VkY0xqtw6W8" target="_blank" rel="noopener"><i class="fa-solid fa-film"></i> Komal Film</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/healthmanual.html" target="_blank" rel="noopener"><i class="fa-solid fa-notes-medical"></i> School Health Manuals</a>
+        <a class="link-chip" href="https://diksha.gov.in/get/dial/R5Z7P5" target="_blank" rel="noopener"><i class="fa-solid fa-repeat"></i> CCT Weekly Practice</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/diksha-vidyadaan.html" target="_blank" rel="noopener"><i class="fa-solid fa-hand-holding-heart"></i> Vidya-Daan</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/web_material/Circulars/2024/29_SahodayaReport.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines"></i> Sahodaya Conference Report</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/NonViolence.html" target="_blank" rel="noopener"><i class="fa-solid fa-dove"></i> Non-Violent Communication</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/library/index.html" target="_blank" rel="noopener"><i class="fa-solid fa-book-open"></i> Library</a>
+        <a class="link-chip" href="https://saras.cbse.gov.in/SARAS/" target="_blank" rel="noopener"><i class="fa-solid fa-building-columns"></i> CBSE Affiliation</a>
+        <a class="link-chip" href="https://ctet.nic.in/" target="_blank" rel="noopener"><i class="fa-solid fa-pen-to-square"></i> CTET</a>
+        <a class="link-chip" href="http://cbse.nic.in/ecbse/index.html" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i> e-CBSE Portal</a>
+        <a class="link-chip" href="https://rajbhasha.gov.in/" target="_blank" rel="noopener"><i class="fa-solid fa-language"></i> Rajbhasha</a>
+        <a class="link-chip" href="https://www.mygov.in/" target="_blank" rel="noopener"><i class="fa-solid fa-users"></i> MyGov</a>
+        <a class="link-chip" href="https://cbseacademic.nic.in/web_material/Manuals/Progress_of_NEP.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-chart-simple"></i> Progress of NEP</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Academics</h4>
+        <ul>
+          <li><a href="https://cbseacademic.nic.in/curriculum_2027.html">Curriculum 2026–27</a></li>
+          <li><a href="https://cbseacademic.nic.in/curriculum_archive.html">Curriculum Archive</a></li>
+          <li><a href="https://cbseacademic.nic.in/manual.html">Handbooks &amp; Manuals</a></li>
+          <li><a href="https://cbseacademic.nic.in/hpc.html" target="_blank" rel="noopener">Holistic Progress Card</a></li>
+          <li><a href="https://cbseacademic.nic.in/lifeskills/index.html" target="_blank" rel="noopener">Life Skills</a></li>
+          <li><a href="https://cbseacademic.nic.in/fln/index.html" target="_blank" rel="noopener">FLN Corner</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://cbseacademic.nic.in/qbclass10.html">Question Bank — Class X</a></li>
+          <li><a href="https://cbseacademic.nic.in/qbclass12.html">Question Bank — Class XII</a></li>
+          <li><a href="https://cbseacademic.nic.in/additionalPQ.html">Additional Practice Questions</a></li>
+          <li><a href="https://cbseacademic.nic.in/SQP_CLASSX_2025-26.html">SQP 2025–26 — Class X</a></li>
+          <li><a href="https://cbseacademic.nic.in/SQP_CLASSXII_2025-26.html">SQP 2025–26 — Class XII</a></li>
+          <li><a href="https://cbseacademic.nic.in/sqp_archive.html">SQP Archive</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Circulars</h4>
+        <ul>
+          <li><a href="https://cbseacademic.nic.in/circulars.html">Latest Circulars</a></li>
+          <li><a href="https://cbseacademic.nic.in/circulars_archive.html">Circular Archive</a></li>
+          <li><a href="https://cbseacademic.nic.in/cenbosec.html">CENBOSEC</a></li>
+          <li><a href="https://cbseacademic.nic.in/web_material/CBSE-Updates(Compendium_of_CBSE%20Circulars)Vol-I.pdf" target="_blank" rel="noopener">Compendium Vol 1</a></li>
+          <li><a href="https://cbseacademic.nic.in/web_material/CBSE_Update(Compendium_of_CBSE%20Circulars)Vol-II.pdf" target="_blank" rel="noopener">Compendium Vol 2</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Programmes</h4>
+        <ul>
+          <li><a href="https://cbseacademic.nic.in/ai.html">Artificial Intelligence</a></li>
+          <li><a href="https://cbseacademic.nic.in/ct-ai.html">CT &amp; AI</a></li>
+          <li><a href="https://cbseacademic.nic.in/cbe/index.html" target="_blank" rel="noopener">CBE Resources</a></li>
+          <li><a href="https://cbseacademic.nic.in/safal/index.html">SAFAL</a></li>
+          <li><a href="https://skilleducation.cbseit.in/" target="_blank" rel="noopener">Skill Education</a></li>
+          <li><a href="https://cbseacademic.nic.in/heritage/index.html" target="_blank" rel="noopener">Heritage Education</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://cbseacademic.nic.in/contactus.html">Contact Us</a></li>
+          <li><a href="https://cbseacademic.nic.in/FAQ.html">FAQ</a></li>
+          <li><a href="https://cbseacademic.nic.in/gallery.html" target="_blank" rel="noopener">Media Gallery</a></li>
+          <li><a href="https://cbseacademic.nic.in/publication_sqps.html" target="_blank" rel="noopener">E-Books &amp; Material</a></li>
+          <li><a href="https://cbseacademic.nic.in/annualreport.html" target="_blank" rel="noopener">Annual Report</a></li>
+          <li><a href="https://cbseacademic.nic.in/tenders.html" target="_blank" rel="noopener">Tenders</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 CBSE Academic Unit. All rights reserved.</span>
+      <div class="socials">
+        <a href="https://www.youtube.com/watch?v=VkY0xqtw6W8" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://www.mygov.in/" target="_blank" rel="noopener" aria-label="MyGov"><i class="fa-solid fa-users"></i></a>
+        <a href="https://cbseacademic.nic.in/contactus.html" aria-label="Contact"><i class="fa-regular fa-envelope"></i></a>
+        <a href="#top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- ============================ TOAST ============================ -->
+<div id="toast" role="status" aria-live="polite">
+  <div class="toast-icon"><i class="fa-solid fa-circle-info"></i></div>
+  <div class="toast-body">
+    <strong>Sorry</strong>
+    <span>Hindi option is currently unavailable.</span>
+  </div>
+  <button class="toast-close" id="toastClose" aria-label="Dismiss notification">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+
+<!-- ============================ SCRIPTS ============================ -->
+<script>
+/* ============================================================
+   HINDI TOAST NOTIFICATION
+   ============================================================ */
+(function(){
+  const hindiBtn   = document.getElementById('hindiBtn');
+  const toast      = document.getElementById('toast');
+  const toastClose = document.getElementById('toastClose');
+  let toastTimer   = null;
+
+  function showToast(){
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(hideToast, 4500);
+  }
+  function hideToast(){
+    toast.classList.remove('show');
+    clearTimeout(toastTimer);
+  }
+
+  if (hindiBtn){
+    hindiBtn.addEventListener('click', e => {
+      e.preventDefault();
+      showToast();
+    });
+  }
+  if (toastClose){
+    toastClose.addEventListener('click', hideToast);
+  }
+
+  // expose for other triggers if needed
+  window.showHindiToast = showToast;
+})();
+
+/* ============================================================
+   MOBILE NAV DRAWER
+   ============================================================ */
+(function(){
+  const navToggle   = document.getElementById('navToggle');
+  const navList     = document.getElementById('navList');
+  const navBackdrop = document.getElementById('navBackdrop');
+  const drawerClose = document.getElementById('drawerClose');
+  const body        = document.body;
+  const DESKTOP_BP  = 993;
+
+  function isMobile(){ return window.innerWidth < DESKTOP_BP; }
+
+  function openDrawer(){
+    navList.classList.add('show');
+    navBackdrop.classList.add('show');
+    body.classList.add('nav-open');
+    navToggle.setAttribute('aria-expanded','true');
+    setTimeout(()=>{ drawerClose && drawerClose.focus(); }, 300);
+  }
+
+  function closeDrawer(){
+    navList.classList.remove('show');
+    navBackdrop.classList.remove('show');
+    body.classList.remove('nav-open');
+    navToggle.setAttribute('aria-expanded','false');
+    navList.querySelectorAll('li.open').forEach(li => li.classList.remove('open'));
+    navList.querySelectorAll('.drop-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false'));
+  }
+
+  navToggle.addEventListener('click', () => {
+    if (navList.classList.contains('show')) closeDrawer();
+    else openDrawer();
+  });
+
+  drawerClose && drawerClose.addEventListener('click', closeDrawer);
+  navBackdrop.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && navList.classList.contains('show')) closeDrawer();
+  });
+
+  navList.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (isMobile()) closeDrawer();
+    });
+  });
+
+  let rTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(rTimer);
+    rTimer = setTimeout(() => {
+      if (!isMobile()) closeDrawer();
+    }, 150);
+  });
+
+  navList.querySelectorAll('.drop-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const li = btn.parentElement;
+      const isOpen = li.classList.contains('open');
+
+      const parentUl = li.parentElement;
+      if (parentUl) {
+        Array.from(parentUl.children).forEach(sib => {
+          if (sib !== li && sib.classList && sib.classList.contains('open')) {
+            sib.classList.remove('open');
+            const sb = sib.querySelector(':scope > .drop-btn');
+            if (sb) sb.setAttribute('aria-expanded','false');
+          }
+        });
+      }
+
+      if (isOpen) {
+        li.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+      } else {
+        li.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+      }
+    });
+  });
+})();
+
+/* ============================================================
+   TABS
+   ============================================================ */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    if (!target) return;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('is-active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    const panel = document.getElementById(target);
+    if (panel) panel.classList.add('is-active');
+  });
+});
+
+/* ============================================================
+   HERO CAROUSEL
+   ============================================================ */
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  if (!slides.length) return;
+
+  const dotsWrap = document.getElementById('dots');
+  let index = 0;
+  let timer = null;
+  const DELAY = 6500;
+
+  slides.forEach((_, i) => {
+    const b = document.createElement('button');
+    b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    if (i === 0) b.classList.add('is-active');
+    b.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(b);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function go(i){
+    slides[index].classList.remove('is-active');
+    dots[index].classList.remove('is-active');
+    index = (i + slides.length) % slides.length;
+    slides[index].classList.add('is-active');
+    dots[index].classList.add('is-active');
+    restart();
+  }
+  function next(){ go(index + 1); }
+  function prev(){ go(index - 1); }
+  function restart(){ clearInterval(timer); timer = setInterval(next, DELAY); }
+
+  document.getElementById('nextSlide').addEventListener('click', next);
+  document.getElementById('prevSlide').addEventListener('click', prev);
+
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', () => clearInterval(timer));
+  hero.addEventListener('mouseleave', restart);
+
+  let startX = 0, startY = 0;
+  hero.addEventListener('touchstart', e => {
+    startX = e.changedTouches[0].screenX;
+    startY = e.changedTouches[0].screenY;
+  }, {passive:true});
+  hero.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].screenX - startX;
+    const dy = e.changedTouches[0].screenY - startY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+      dx < 0 ? next() : prev();
+    }
+  }, {passive:true});
+
+  restart();
+})();
+
+/* ============================================================
+   BACK TO TOP
+   ============================================================ */
+const backTop = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('show', window.scrollY > 420);
+}, {passive:true});
+backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+</script>
+
+</body>
+</html>
